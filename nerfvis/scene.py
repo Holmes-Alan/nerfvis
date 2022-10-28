@@ -777,12 +777,12 @@ class Scene:
 
     def add_nerf(self,
                  name: str,
-                 tree_path : str,
                  eval_fn : Callable[..., Tuple[Any, Any]],
                  center: Union[Tuple[float, float, float], List[float], float, np.ndarray, None]
                         = None,
                  radius: Union[Tuple[float, float, float], List[float], float, np.ndarray, None]
                         = None,
+                 tree_path : str,
                  scale : float = 1.0,
                  reso : int = 256,
                  use_dirs : bool = False,
@@ -1011,7 +1011,7 @@ class Scene:
 
             tree.shrink_to_fit()
             print('* Saving tree file')
-            tree.save(tree_path, compress=compress)  # Faster saving
+            tree.save(path=tree_path, compress=compress)  # Faster saving
             tree_data = {
                 "data_dim" : tree.data_dim,
                 "data_format" : repr(tree.data_format),
