@@ -782,7 +782,7 @@ class Scene:
                         = None,
                  radius: Union[Tuple[float, float, float], List[float], float, np.ndarray, None]
                         = None,
-                 tree_path : str,
+                 tree_path : str = "tree.npz",
                  scale : float = 1.0,
                  reso : int = 256,
                  use_dirs : bool = False,
