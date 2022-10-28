@@ -778,7 +778,6 @@ class Scene:
     def add_nerf(self,
                  name: str,
                  tree_path : str,
-                 compress : bool = False,
                  eval_fn : Callable[..., Tuple[Any, Any]],
                  center: Union[Tuple[float, float, float], List[float], float, np.ndarray, None]
                         = None,
@@ -792,6 +791,7 @@ class Scene:
                  sh_proj_use_sparse : bool = True,
                  sigma_thresh : float = 3.0,
                  weight_thresh : float = 0.001,
+                 compress : bool = False,
                  r : Optional[Any] = None,
                  t : Optional[Any] = None,
                  focal_length : Optional[Union[float, Tuple[float, float]]] = None,
