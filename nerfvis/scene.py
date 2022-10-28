@@ -777,6 +777,8 @@ class Scene:
 
     def add_nerf(self,
                  name: str,
+                 tree_path : str,
+                 compress : bool = False,
                  eval_fn : Callable[..., Tuple[Any, Any]],
                  center: Union[Tuple[float, float, float], List[float], float, np.ndarray, None]
                         = None,
@@ -803,7 +805,7 @@ class Scene:
         Discretize and display a NeRF (low quality, for visualization purposes only).
         Currently only supports PyTorch NeRFs.
         Requires tqdm, torch, svox, scipy
-
+        :param tree_path: path for tree file save
         :param eval_fn:
                         - If :code:`use_dirs=False`: NeRF function taking a batch of points :code:`(B, 3)` and returning :code:`(rgb (B, 3), sigma (B, 1))` after activation applied.
 
@@ -1008,6 +1010,8 @@ class Scene:
             print(" Finishing up")
 
             tree.shrink_to_fit()
+            print('* Saving tree file')
+            tree.save(tree_path, compress=compress)  # Faster saving
             tree_data = {
                 "data_dim" : tree.data_dim,
                 "data_format" : repr(tree.data_format),
